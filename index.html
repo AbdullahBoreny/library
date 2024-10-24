@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="script.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>library</title>
+</head>
+<body>
+    <button class="btn-open-popup" onclick="togglePopup()">
+        ADD A BOOK
+        </button>
+  
+      <div id="popupOverlay" 
+           class="overlay-container">
+          <div class="popup-box">
+              <h2 style="color: green;">NEW BOOK</h2>
+              <form class="form-container">
+                  <label class="form-label" 
+                         for="title">
+                    Title:
+                    </label>
+                  <input class="form-input" type="text" 
+                         placeholder="Enter the book title" 
+                         id="title" name="title" required>
+  
+                  <label class="form-label" for="author">Author:</label>
+                  <input class="form-input"
+                         type="text" 
+                         placeholder="Enter the book author"
+                         id="author" 
+                         name="author" required>
+
+                  <label class="form-label" for="pages">Pages:</label>
+                  <input class="form-input"
+                         type="text" 
+                         placeholder="Enter the book pages"
+                         id="pages" 
+                         name="pages" required>
+
+
+                     <label class="form-label" for="read">Read:</label>
+                     <input class="form-input"
+                            type="text" 
+                            placeholder="Enter whethear you read the book or not"
+                            id="read" 
+                            name="read" required>
+
+                         
+  
+                  <button class="btn-submit" 
+                          type="submit">
+                    Submit
+                    </button>
+              </form>
+  
+              <button class="btn-close-popup" 
+                      onclick="togglePopup()">
+                Close
+                </button>
+          </div>
+      </div>
+   
+   
+</body>
+</html>
