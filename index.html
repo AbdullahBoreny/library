@@ -6,16 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css">
-   
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="card.css">
+
 
 </head>
 
 <body>
     <div class="container"></div>
-    <button class="add-book-button">
-        Add book to library
+
+
+    <button class="btn-open-popup" onclick="togglePopup()">
+        Add Book to library
     </button>
+
+    <div id="popupOverlay" class="overlay-container">
+        <div class="popup-box">
+            <h2 style="color: green;">Book info</h2>
+            <form class="form-container">
+                <label class="form-label" for="name">Name of the author:
+                </label>
+                <input value="" class="form-input author-name" type="text" placeholder="ex:George Martin" id="name"
+                    name="name" required>
+                <label class="form-label" for="name">Name of the book:
+                </label>
+                <input value="" class="form-input  book-name" type="text" placeholder="ex:Game of thrones" id="name"
+                    name="name" required>
+
+                <label class="form-label " for="name">Number of pages:
+                </label>
+                <input value="" class="form-input book-pages" type="text" placeholder="ex:220" id="name" name="name"
+                    required>
+
+                <label class="form-label " for="name">Status:
+                </label>
+                <input value="" class="form-input book-status" type="text" placeholder="ex:yes or no" id="name"
+                    name="name" required>
+
+
+                <button class="btn-submit" type="submit">
+                    ADD BOOK
+                </button>
+            </form>
+
+            <button class="btn-close-popup" onclick="togglePopup()">
+                Close
+            </button>
+        </div>
+    </div>
+
+
 </body>
 
 </html>
