@@ -1,11 +1,33 @@
-
-.btn-open-popup {
+.btn-open-popup
+ {
     padding: 12px 24px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    right: 10px;
+    top: 10px;
     font-size: 18px;
-    background-color: green;
-    color: #fff;
-    border: none;
+   
+    font-weight: bold;
     border-radius: 8px;
+    color: green;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.close-all {
+    padding: 12px 24px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    right: 10px;
+    top: 10px;
+    font-size: 18px;
+    margin-left: 5px;
+    background-color: red;
+
+    font-weight: bold;
+    border-radius: 8px;
+    color: rgb(255, 255, 255);
     cursor: pointer;
     transition: background-color 0.3s ease;
 }

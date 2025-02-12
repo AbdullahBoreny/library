@@ -1,37 +1,125 @@
+       .toggle-container {
+        display: flex;
+        color: black;
+        align-items: center;
+       }
        
-.card {
-    margin-bottom: 20px;
-    margin-right: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 20px 10px 10px 10px;
-    background-color: rgb(230, 230, 230);
-    width: 300px;
-    height: 350px;
-    border-radius: 10px;
-    box-shadow: 4px 5px 5px 0.5px rgba(0, 0, 0, 0.4);
-}
+       .card {
+            
+           margin-bottom: 25px;
+           margin-right: 20px;
+           font-family: Arial, Helvetica, sans-serif;
+           padding: 20px 10px 10px 20px;
+         
+           width: 300px;
+           position: relative;
+           height: 300px;
+           border-radius: 10px;
+          
+           box-shadow: 1px 2px 5px 0.3px rgba(0, 0, 0, 0.5);
+       }
 
-.container {
-    display: flex;
-    flex-wrap: wrap;
-}
-.card div {
-    margin-bottom: 10px;
-    font-size: 18px;
-}
-.add-book-button {
-   
-    text-align: center;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 20px;
-    border: none;
-    padding: 10px 20px 10px 20px;
-    transition: 0.5s;
-    background-color: rgb(78, 78, 241);
-}
-.add-book-button:hover {
-    opacity: 0.6;
-}
+     
+
+       .card> div {
+      
+           margin-bottom: 20px;
+           font-size: 18px;
+           font-weight: bold;
+           color: rgb(69, 69, 69);
+          
+       }
+
+       .add-book-button {
+
+           text-align: center;
+           color: white;
+           font-family: Arial, Helvetica, sans-serif;
+           font-weight: bold;
+           cursor: pointer;
+           border-radius: 20px;
+           border: none;
+           padding: 10px 20px 10px 20px;
+           transition: 0.5s;
+           background-color: rgb(78, 78, 241);
+       }
+
+       .add-book-button:hover {
+           opacity: 0.6;
+       }
+
+       .remove-sign {
+           color: white;
+           position: absolute;
+           border: none;
+           bottom: -15px;
+           right: -10px;
+         width: 35px;
+         height: 35px;
+         
+           font-weight: bold;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           border-radius: 20px;
+           background-color: red;
+           cursor: pointer;
+           transition: 0.3s;
+
+       }
+
+       .remove-sign:hover {
+           opacity: 0.5;
+       }
+
+       .toggle-sign {
+          
+           position: absolute;
+           border: none;
+           bottom: 25px;
+           right: -10px;
+           width: 35px;
+           height: 35px;
+           font-weight: bold;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           border-radius: 25px;
+          border-style: solid;
+          background-color: white;
+          border-color: green;
+           cursor: pointer;
+           
+
+       }
+
+       .toggle-sign:hover {
+     
+       
+           box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.9);
+       }
+       .toggle-sign:active {
+        background-color: red;
+       }
+       .toggle-info {
+        margin-top: 90px;
+        color: rgb(192, 192, 192);
+       }
+       .negative {
+        color: white;
+        position: absolute;
+        border: none;
+        bottom: 25px;
+        right: -10px;
+        width: 40px;
+        height: 40px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 25px;
+        background-color: rgb(255, 0, 0);
+        cursor: pointer;
+        
+
+    }

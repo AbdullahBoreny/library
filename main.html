@@ -5,20 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="form.css">
     <link rel="stylesheet" href="card.css">
+    <link rel="stylesheet" href="general.css">
 
 
 </head>
 
 <body>
+    <div class="header">
+        <div class="title">Library Website</div>
+        <div class="header-buttons">
+            <button class="btn-open-popup" onclick="togglePopup()">
+                Add Book to library
+            </button>
+            <button class="close-all">Remove All</button>
+        </div>
+    </div>
+    <div class="side-bar">
+        <div class="home"></div>
+    </div>
     <div class="container"></div>
 
 
-    <button class="btn-open-popup" onclick="togglePopup()">
-        Add Book to library
-    </button>
+
+
+
 
     <div id="popupOverlay" class="overlay-container">
         <div class="popup-box">
