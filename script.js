@@ -1,8 +1,21 @@
 const myLibrary = [];
 
 
-const submitButton = document.querySelector(".btn-submit");
-submitButton.addEventListener("click",createBook,false);
+const submitButton = document.querySelector(".popup-box");
+submitButton.addEventListener("submit",(event)=> {
+    event.preventDefault();
+    const bookName = document.querySelector(".book-name");
+    const authorName = document.querySelector(".author-name");
+    const bookPages = document.querySelector(".book-pages");
+    const bookStatus = document.querySelector(".book-status");
+    const book1 = new Book(authorName.value,bookName.value,bookPages.value,bookStatus.value);
+   createCard(book1);
+   togglePopup();
+   
+});
+
+
+
 const container = document.querySelector(".container")
 const closeButton = document.querySelector('.close-all');
 closeButton.addEventListener("click",()=> {
@@ -32,8 +45,8 @@ Book.prototype.toggleStatus = function(status) {
     }
 };
 
-function addBookToLibrary(bookObj) {
-    myLibrary.push(bookObj);
+function addBookToLibrary(card) {
+    myLibrary.push(card);
     
 }
 function togglePopup() {
@@ -41,21 +54,11 @@ function togglePopup() {
     overlay.classList.toggle('show');
    
 }
-function createBook (event) {
-    
- const bookName = document.querySelector(".book-name");
- const authorName = document.querySelector(".author-name");
- const bookPages = document.querySelector(".book-pages");
- const bookStatus = document.querySelector(".book-status");
- const book1 = new Book(authorName.value,bookName.value,bookPages.value,bookStatus.value);
 
-createCard(book1);
-event.preventDefault();
-}
 let i = 0;
 function createCard (book) {
-    
-        const container = document.querySelector(".container");
+   
+        let container = document.querySelector(".container");
         container.classList.add("container-style");
         const card = document.createElement("div");
         let toggleContainer = document.createElement("div")
@@ -66,8 +69,8 @@ function createCard (book) {
         toggleInfo.classList.add("toggle-info")
         
         toggleInfo.textContent = 'Click to toggle book status';
-        toggleContainer.appendChild(toggleButton);
-        toggleContainer.appendChild(toggleInfo);
+        toggleContainer.append(toggleButton,toggleInfo);
+
 
 
 
@@ -80,21 +83,17 @@ function createCard (book) {
        
         let author =document.createElement("div");
         author.textContent = `Author Name: ${book.author}`;
-     
+
         let name = document.createElement("div");
         name.textContent = `Book Name: ${book.name}`;
-     
+        
         let pages = document.createElement("div");
         pages.textContent = `No' of pages: ${book.pages}`;
      
         let status = document.createElement("div");
         status.textContent = `Status:${book.status}`
-        card.appendChild(author);
-        card.appendChild(name);
-        card.appendChild(pages);
-        card.appendChild(status);
-        card.appendChild(toggleContainer);
-        card.appendChild(removeSign);
+        card.append(author,name,pages,status,toggleContainer,removeSign);
+        
         addBookToLibrary(card);
         container.appendChild(card);
 
@@ -115,5 +114,7 @@ function createCard (book) {
        
 }
 
-
+const bookTest = new Book("The Alchemist",	"Paulo Coelho",208,"not read");
+createCard(bookTest);
+addBookToLibrary(bookTest);
 
