@@ -116,5 +116,5 @@ function createCard (book) {
 
 const bookTest = new Book("The Alchemist",	"Paulo Coelho",208,"not read");
 createCard(bookTest);
-addBookToLibrary(bookTest);
+
 
