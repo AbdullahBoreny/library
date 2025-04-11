@@ -2,18 +2,19 @@
         display: flex;
         color: black;
         align-items: center;
+        
        }
        
        .card {
-            
+            margin-top: 20px;
            margin-bottom: 25px;
            margin-right: 20px;
            font-family: Arial, Helvetica, sans-serif;
            padding: 20px 10px 10px 20px;
          
-           width: 300px;
+           max-width: 300px;
            position: relative;
-           height: 300px;
+           min-height: 300px;
            border-radius: 10px;
           
            box-shadow: 1px 2px 5px 0.3px rgba(0, 0, 0, 0.5);
@@ -103,6 +104,8 @@
        }
        .toggle-info {
         margin-top: 90px;
+      font-size: 1rem;
+      max-width: 200px;
         color: rgb(192, 192, 192);
        }
        .negative {
