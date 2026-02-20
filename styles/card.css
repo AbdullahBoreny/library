@@ -2,6 +2,7 @@
   --primary: #6366f1;
   --primary-hover: #4f46e5;
   --danger: #ef4444;
+  --header:  green;
   --danger-hover: #dc2626;
   --card-bg: #ffffff;
   --text-main: #1f2937;
@@ -19,6 +20,7 @@
 }
 
 .card {
+  border-left: ;
   margin: 20px;
   padding: 24px;
   min-height: 300px;

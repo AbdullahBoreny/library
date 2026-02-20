@@ -1,5 +1,6 @@
 const submitButton = document.querySelector(".popup-box");
 let bookStatus = document.querySelector(".book-status");
+console.log(bookStatus.checked);
 
 submitButton.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -23,6 +24,8 @@ const closeButton = document.querySelector(".close-all");
 closeButton.addEventListener("click", () => {
   if (confirm("Are you sure?")) {
     localStorage.clear();
+    printStats();
+
     container.textContent = "";
   } else {
     return;
@@ -43,9 +46,6 @@ const displayBooksDom = () => {
   }
 };
 
-function addBookToLibrary(card) {
-  console.log(card);
-}
 function togglePopup() {
   const overlay = document.getElementById("popupOverlay");
   overlay.classList.toggle("show");
@@ -82,32 +82,74 @@ function createCard(book) {
   pages.textContent = `No' of pages: ${book.pages}`;
 
   let status = document.createElement("div");
+  console.log(book.status);
+
+  status.textContent = book.status ? `Status: READ` : `Status: NOT READ`;
+
   localStorage.setItem(book.id, JSON.stringify(book));
 
-  if (bookStatus.checked) {
-    status.textContent = `Status: READ`;
-  } else {
-    status.textContent = `Status: NOT READ`;
-  }
   card.append(author, name, pages, status, toggleContainer, removeSign);
 
-  addBookToLibrary(card);
-
   container.appendChild(card);
-
+  printStats();
   removeSign.addEventListener("click", () => {
     if (confirm("Are you sure?")) {
-      console.log(removeSign.value);
       container.removeChild(card);
       localStorage.removeItem(removeSign.value);
+      printStats();
     } else {
       return;
     }
   });
   toggleButton.addEventListener("click", () => {
+    // Toggle the book status
     book.status = !book.status;
+    // Save updated book to localStorage
+    localStorage.setItem(book.id, JSON.stringify(book));
+    // Update the card display
     status.textContent = book.status ? `Status: READ` : `Status: NOT READ`;
+    printStats();
   });
 }
+function getAllReadBooks() {
+  const books = [];
+
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    try {
+      const book = JSON.parse(localStorage.getItem(key));
+      if (book && "status" in book) {
+        books.push(book);
+      }
+      notReadBooks.push(book);
+    } catch {
+      continue;
+    }
+  }
+  return books;
+}
+function printStats() {
+  printDomRead = () => {
+    const readCount = document.querySelector(".stat-read");
+    const readBook = getAllReadBooks().filter((book) => book.status === true);
+    readCount.textContent = readBook.length;
+  };
+  printDomTotal = () => {
+    let total = document.querySelector(".stat-total");
+    total.textContent = localStorage.length;
+  };
+  printUnreadDom = () => {
+    let unread = document.querySelector(".stat-unread");
+    const unreadBook = getAllReadBooks().filter(
+      (book) => book.status === false,
+    );
+    unread.textContent = unreadBook.length;
+  };
+  printDomRead();
+  printDomTotal();
+  printUnreadDom();
+}
+
 displayBooksDom();
 togglePopup();
+printStats();
