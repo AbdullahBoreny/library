@@ -14,7 +14,6 @@ function getAllBooks() {
   return books;
 }
 
-// Render only read books
 function renderReadBooks() {
   container.innerHTML = "";
 
@@ -62,6 +61,5 @@ function renderReadBooks() {
   });
 }
 
-// Initial render
 renderReadBooks();
 
