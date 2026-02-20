@@ -62,7 +62,7 @@ function createCard(book) {
   let toggleInfo = document.createElement("div");
   toggleInfo.classList.add("toggle-info");
 
-  toggleInfo.textContent = "Click to toggle book status";
+  toggleInfo.textContent = "MARK AS READ / UNREAD";
   toggleContainer.append(toggleButton, toggleInfo);
 
   let removeSign = document.createElement("button");
@@ -85,9 +85,9 @@ function createCard(book) {
   localStorage.setItem(book.id, JSON.stringify(book));
 
   if (bookStatus.checked) {
-    status.textContent = `Status: yes read`;
+    status.textContent = `Status: READ`;
   } else {
-    status.textContent = `Status: not read yet`;
+    status.textContent = `Status: NOT READ`;
   }
   card.append(author, name, pages, status, toggleContainer, removeSign);
 
@@ -106,9 +106,7 @@ function createCard(book) {
   });
   toggleButton.addEventListener("click", () => {
     book.status = !book.status;
-    status.textContent = book.status
-      ? `Status: yes read`
-      : `Status: not read yet`;
+    status.textContent = book.status ? `Status: READ` : `Status: NOT READ`;
   });
 }
 displayBooksDom();

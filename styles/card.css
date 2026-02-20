@@ -8,9 +8,9 @@
   --text-muted: #6b7280;
   --radius: 18px;
   --transition: all 0.25s ease;
+  
 }
 
-/* Toggle container */
 .toggle-container {
   display: flex;
   align-items: center;
@@ -21,7 +21,6 @@
 .card {
   margin: 20px;
   padding: 24px;
-  max-width: 300px;
   min-height: 300px;
   position: relative;
   border-radius: var(--radius);
