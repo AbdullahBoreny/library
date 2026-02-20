@@ -1,5 +1,3 @@
-const myLibrary = [];
-
 const submitButton = document.querySelector(".popup-box");
 submitButton.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -21,7 +19,8 @@ const container = document.querySelector(".container");
 const closeButton = document.querySelector(".close-all");
 closeButton.addEventListener("click", () => {
   if (confirm("Are you sure?")) {
-    container.textContent = " ";
+    localStorage.clear();
+    container.textContent = "";
   } else {
     return;
   }
@@ -32,6 +31,7 @@ function Book(author, name, pages, status) {
   this.name = name;
   this.pages = pages;
   this.status = status;
+  this.id = crypto.randomUUID();
 }
 Book.prototype.toggleStatus = function (status) {
   if (status.textContent.includes("no")) {
@@ -41,22 +41,19 @@ Book.prototype.toggleStatus = function (status) {
   }
 };
 const displayBooksDom = () => {
-  for (let i = 0; i < localStorage.length; i++){
+  for (let i = 0; i < localStorage.length; i++) {
     createCard(JSON.parse(localStorage.getItem(localStorage.key(i))));
-}
- 
+  }
 };
 
-
 function addBookToLibrary(card) {
-  myLibrary.push(card);
+  console.log(card);
 }
 function togglePopup() {
   const overlay = document.getElementById("popupOverlay");
   overlay.classList.toggle("show");
 }
 
-let i = 0;
 function createCard(book) {
   let container = document.querySelector(".container");
   container.classList.add("container-style");
@@ -74,8 +71,8 @@ function createCard(book) {
   let removeSign = document.createElement("button");
   removeSign.textContent = `X`;
   removeSign.classList.add("remove-sign");
-  removeSign.setAttribute("value", i);
-  i++;
+  removeSign.setAttribute("value", book.id);
+
   card.classList.add("card");
 
   let author = document.createElement("div");
@@ -88,20 +85,20 @@ function createCard(book) {
   pages.textContent = `No' of pages: ${book.pages}`;
 
   let status = document.createElement("div");
-  localStorage.setItem(i, JSON.stringify(book));
+  localStorage.setItem(book.id, JSON.stringify(book));
 
   status.textContent = `Status:${book.status}`;
   card.append(author, name, pages, status, toggleContainer, removeSign);
 
   addBookToLibrary(card);
 
-  console.log(container);
-
   container.appendChild(card);
 
   removeSign.addEventListener("click", () => {
     if (confirm("Are you sure?")) {
-      container.removeChild(myLibrary[removeSign.value]);
+      console.log(removeSign.value);
+      container.removeChild(card);
+      localStorage.removeItem(removeSign.value);
     } else {
       return;
     }
@@ -111,6 +108,4 @@ function createCard(book) {
   });
 }
 
-const bookTest = new Book("The Alchemist", "Paulo Coelho", 208, "not read");
-addBookToLibrary(bookTest);
 displayBooksDom();
