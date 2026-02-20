@@ -109,3 +109,4 @@ function createCard(book) {
 }
 
 displayBooksDom();
+togglePopup();
