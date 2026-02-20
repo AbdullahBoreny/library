@@ -1,16 +1,19 @@
 const submitButton = document.querySelector(".popup-box");
+let bookStatus = document.querySelector(".book-status");
+
 submitButton.addEventListener("submit", (event) => {
   event.preventDefault();
   const bookName = document.querySelector(".book-name");
   const authorName = document.querySelector(".author-name");
   const bookPages = document.querySelector(".book-pages");
-  const bookStatus = document.querySelector(".book-status");
+
   const book1 = new Book(
     authorName.value,
     bookName.value,
     bookPages.value,
-    bookStatus.value,
+    bookStatus.checked,
   );
+
   createCard(book1);
   togglePopup();
 });
@@ -33,13 +36,7 @@ function Book(author, name, pages, status) {
   this.status = status;
   this.id = crypto.randomUUID();
 }
-Book.prototype.toggleStatus = function (status) {
-  if (status.textContent.includes("no")) {
-    status.textContent = `Status: yes read`;
-  } else {
-    status.textContent = "Status: not read";
-  }
-};
+
 const displayBooksDom = () => {
   for (let i = 0; i < localStorage.length; i++) {
     createCard(JSON.parse(localStorage.getItem(localStorage.key(i))));
@@ -87,7 +84,11 @@ function createCard(book) {
   let status = document.createElement("div");
   localStorage.setItem(book.id, JSON.stringify(book));
 
-  status.textContent = `Status:${book.status}`;
+  if (bookStatus.checked) {
+    status.textContent = `Status: yes read`;
+  } else {
+    status.textContent = `Status: not read yet`;
+  }
   card.append(author, name, pages, status, toggleContainer, removeSign);
 
   addBookToLibrary(card);
@@ -104,9 +105,11 @@ function createCard(book) {
     }
   });
   toggleButton.addEventListener("click", () => {
-    book.toggleStatus(status);
+    book.status = !book.status;
+    status.textContent = book.status
+      ? `Status: yes read`
+      : `Status: not read yet`;
   });
 }
-
 displayBooksDom();
 togglePopup();
